@@ -1,0 +1,18 @@
+<html>
+    <head>
+    <title> Thesis Approval </title>
+    </head>
+    <body>
+        <h1>Thesis Approval</h1>
+        <a href="{{url_for('home')}}">Home Page</a>
+        <form action="/approve" method="POST">
+            <label for="selectphd">Choose a PHD student</label>
+            <select name="selectphd" id="selectphd">
+                {% for i in session['phd_students']%}
+                <option value={{i[0]}}>{{i[0]}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" name="submit">
+        </form>
+    </body>
+</html>

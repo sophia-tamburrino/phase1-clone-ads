@@ -1,0 +1,15 @@
+<h2>Change Advisor</h2>
+<a href="{{url_for('home')}}">Home Page</a>
+<form method="POST">
+  <label for="student_uid">Student UID:</label>
+  <input type="text" name="student_uid" required><br>
+
+  <label for="new_advisor_uid">New Advisor UID:</label>
+  <input type="text" name="new_advisor_uid" required><br>
+
+  <input type="submit" value="Change Advisor">
+</form>
+
+{% if message %}
+  <p>{{ message }}</p>
+{% endif %}

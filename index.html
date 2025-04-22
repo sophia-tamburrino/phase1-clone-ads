@@ -1,0 +1,19 @@
+<html>
+    <head>
+    <title> Login </title>
+    </head>
+    <body>
+        <h1>Login</h1>
+        {% if error %}
+            <p style = "color:red;">{{ error }}</p>
+        {% endif %}
+        <form action="/home" method="POST">
+            <h5>Username:</h5>
+            <input type="text" name="user" ><br>
+            <h5>Password:</h5>
+            <input type="text" name="pass" ><br>
+            <input type="submit" name="submit">
+            <a href = "{{url_for('createaccount')}}">Create Account</a>
+        </form>
+    </body>
+</html>

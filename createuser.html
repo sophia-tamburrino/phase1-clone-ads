@@ -1,0 +1,56 @@
+<h2>Create User</h2>
+<a href="{{url_for('home')}}">Home Page</a>
+<form method="POST">
+    <label for="uid">UID:</label>
+    <input type="text" name="uid" required><br>
+  
+    <label for="password">Password:</label>
+    <input type="password" name="password" required><br>
+  
+    <label for="typid">Type of User:</label>
+    <select name="typid" required>
+      <option value="">Select</option>
+      <option value="Graduate Student">Graduate Student</option>
+      <option value="Faculty Advisor">Faculty Advisor</option>
+      <option value="Graduate Secretary">Graduate Secretary</option>
+    </select><br>
+  
+    <label for="fname">First Name:</label>
+    <input type="text" name="fname"><br>
+  
+    <label for="lname">Last Name:</label>
+    <input type="text" name="lname"><br>
+  
+    <label for="email">Email:</label>
+    <input type="email" name="email"><br>
+  
+    <label for="address">Address:</label>
+    <input type="text" name="address"><br>
+  
+    <label for="program">Program (MS or PhD):</label>
+    <select name="program">
+      <option value="">Select</option>
+      <option value="MS">MS</option>
+      <option value="PhD">PhD</option>
+    </select><br>
+  
+    <label for="appliedforgrad">Applied for Grad:</label>
+    <select name="appliedforgrad">
+      <option value="">Select</option>
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select><br>
+  
+    <label for="suspensioncheck">Suspended:</label>
+    <select name="suspensioncheck">
+      <option value="">Select</option>
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select><br>
+  
+    <input type="submit" value="Create User">
+  </form>
+  
+  {% if message %}
+    <p>{{ message }}</p>
+  {% endif %}
