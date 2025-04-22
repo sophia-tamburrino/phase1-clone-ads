@@ -1,0 +1,18 @@
+<html>
+    <head>
+    <title> Form 1 </title>
+    </head>
+    <body>
+        <h1>Form 1</h1>
+        <a href="{{url_for('home')}}">Home Page</a>
+        <form action="/form1_submit" method="POST">
+            {{error}}<br>
+            <!-- List courses to take. Max of 12-->
+            {% for i in session['courses']: %}
+            <input type="checkbox" id="class" name="{{i[0]}} {{i[1]}}" value="{{i[0]}} {{i[1]}}">
+            <label for="{{i[0]}} {{i[1]}}">{{i[0]}} {{i[1]}} - {{i[2]}}</label><br>
+            {% endfor %}
+            <input type="submit" name="submit">
+        </form>
+    </body>
+</html>

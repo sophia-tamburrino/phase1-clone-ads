@@ -1,0 +1,18 @@
+<html>
+    <head>
+    <title> Assign Advisor </title>
+    </head>
+    <body>
+        <h1>Assign Advisor</h1>
+        <a href="{{url_for('home')}}">Home Page</a>
+        <form action="/faculty_assign_student" method="POST">
+            <label for="advisor">Choose an unadvised student</label>
+            <select name="advisor" id="advisor">
+                {% for i in session['unadvised_students']%}
+                <option value={{i[0]}}>{{i[0]}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" name="submit">
+        </form>
+    </body>
+</html>

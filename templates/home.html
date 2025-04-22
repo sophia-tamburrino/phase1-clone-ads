@@ -1,0 +1,83 @@
+<html>
+    <head>
+    <title>Home</title>
+    </head>
+    <body>
+        <h1>Welcome {{session['type_user']}} {{session['username']}}</h1>
+        <!-- this is where we check which type_user it is and output the proper info depending on 
+        whether it is TA, Professor, etc -->
+        <a href = "{{url_for('login')}}">Log Out</a>
+        {% if session['type_user'] == "Student": %}
+        <a href = "{{url_for('personalinfo')}}">Personal Information</a>
+        <a href = "{{url_for('form1')}}">Form 1</a>
+        <a href = "{{url_for('graduation_app')}}">Apply for Graduation</a>
+        <table>
+            <thead>
+                <th>Department</th>
+                <th>Course Number</th>
+                <th>Semester</th>
+                <th>Year</th>
+                <th>Grade</th>
+            </thead>
+            <body>
+                {%for row in session['enrollment']%}
+                <tr>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                    <td>{{row[3]}}</td>
+                </tr>
+                {%endfor%}
+            </body>
+        </table>
+        {% endif %}
+        {% if session['type_user'] == "Alumni": %}
+        <a href = "{{url_for('personalinfo')}}">Personal Information</a>
+        {% endif %}
+        {% if session['type_user'] == "Graduate Secretary": %}
+        <a href="{{url_for('faculty_assign')}}">Assign Faculty Advisor</a>
+        <a href="{{url_for('graduate_student')}}">Graduate Student</a>
+        <a href="{{url_for('student_data')}}">Access Student's Data</a>
+        {% endif %}
+        {% if session['type_user'] == "Faculty Advisor": %}
+        <a href="{{url_for('form1_review')}}">Review Form 1</a>
+        <a href="{{url_for('thesis_approval')}}">Approve Thesis</a>
+        <a href="{{url_for('view_transcript')}}">View Student's Transcript</a>
+        {% endif %}
+        {% if session['type_user'] == "Systems Administration": %}
+        <a href="{{url_for('faculty_assign')}}">Assign Faculty Advisor</a>
+        <a href="{{url_for('graduate_student')}}">Graduate Student</a>
+        <a href="{{url_for('student_data')}}">Access Student's Data</a>
+        <a href="{{url_for('form1_review')}}">Review Form 1</a>
+        <a href="{{url_for('thesis_approval')}}">Approve Thesis</a>
+        <a href="{{url_for('view_transcript')}}">View Student's Transcript</a>
+        <a href="{{url_for('createuser')}}"> Create User</a>
+        <a href="{{url_for('changeadvisor')}}">Change Advisor</a>
+        <a href="{{url_for('editgrades')}}">Edit Grades</a>
+        {% endif %}
+
+
+        <h2>Course Catalog</h2>
+        <table>
+            <tr>
+                <th>Department</th>
+                <th>Course Number</th>
+                <th>Course Name</th>
+                <th>Credit Hours</th>
+                <th>Prereq1</th>
+                <th>Prereq2</th>
+            </tr>
+            {% for course in session['courses'] %}
+            <tr>
+                <td>{{ course[0] }}</td>
+                <td>{{ course[1]}}</td>
+                <td>{{ course[2]}}</td>
+                <td>{{ course[3] }}</td>
+                <td>{{ course[4] }}</td>
+                <td>{{ course[5] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

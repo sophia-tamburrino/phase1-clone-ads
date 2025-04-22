@@ -1,0 +1,18 @@
+<html>
+    <head>
+    <title> Graduate Student </title>
+    </head>
+    <body>
+        <h1>Graduate Student</h1>
+        <a href="{{url_for('home')}}">Home Page</a>
+        <form action="/graduated" method="POST">
+            <label for="graduate">Choose a student to graduate</label>
+            <select name="graduate" id="graduate">
+                {% for i in session['graduate']%}
+                <option value={{i[0]}}>{{i[0]}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" name="submit">
+        </form>
+    </body>
+</html>
